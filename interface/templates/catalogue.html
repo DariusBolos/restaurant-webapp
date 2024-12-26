@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Catalogue</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename="css/catalogue.css") }}">
+{% endblock %}
+
+{% block body %}
+    <div class="main-container">
+        <div class="dish-container">
+            <table>
+                <caption>Main course:</caption>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Preparation time</th>
+                    <th>Portion size</th>
+                    <th></th>
+                </tr>
+
+                {% for dish in dishes %}
+                    <form method="post">
+                        <tr>
+                            <td>
+                                <input type="hidden" name="id" value={{ dish.id }}>
+                                {{ dish.id }}
+                            </td>
+                            <td>{{ dish.name }}</td>
+                            <td>{{ dish.price }} Euro</td>
+                            <td>{{ dish.prepTime }} minutes</td>
+                            <td>350g</td>
+                            <td>
+                                <input class="remove-button" type="submit" value="Remove Dish" name="remove">
+                            </td>
+                        </tr>
+                    </form>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="drink-container">
+            <table>
+                <caption>Drinks:</caption>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Alcohol</th>
+                    <th>Portion size</th>
+                    <th></th>
+                </tr>
+
+                {% for drink in drinks %}
+                    <form method="post">
+                        <tr>
+                            <td>
+                                {{ drink.id }}
+                                <input type="hidden" name="id" value={{ drink.id }}>
+                            </td>
+                            <td>{{ drink.name }}</td>
+                            <td>{{ drink.price }} Euro</td>
+                            <td>{{ drink.alcohol }}%</td>
+                            <td>200 ml</td>
+                            <td>
+                                <input class="remove-button" type="submit" value="Remove Drink" name="remove">
+                            </td>
+                        </tr>
+                    </form>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

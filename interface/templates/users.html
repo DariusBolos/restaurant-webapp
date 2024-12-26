@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Customer List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename="css/catalogue.css") }}">
+{% endblock %}
+
+{% block body %}
+    <div class="main-container">
+        <div class="customers-container">
+            <table>
+                <caption>Customers:</caption>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th></th>
+                </tr>
+
+                {% for customer in customers %}
+                    <form method="post">
+                        <tr>
+                            <td>
+                                <input type="hidden" name="id" value={{ customer.id }}>
+                                {{ customer.id }}
+                            </td>
+                            <td>{{ customer.name }}</td>
+                            <td>{{ customer.address }}</td>
+                            <td>
+                                <input class="remove-button" type="submit" value="Remove Customer" name="remove">
+                            </td>
+                        </tr>
+                    </form>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

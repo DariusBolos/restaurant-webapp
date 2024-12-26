@@ -1,0 +1,91 @@
+html{color-scheme: dark}
+
+* {
+    font-family: Poppins, sans-serif;
+    box-sizing: border-box;
+}
+
+.customer-container {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    width: 370px;
+    margin-top: 5vw;
+    margin-left: 10vw
+}
+
+.select-button, .options li {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+}
+
+.select-button {
+    height: 40px;
+    font-size: 22px;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: forestgreen;
+    border-radius: 7px;
+}
+
+.select-button i {
+    font-size: 30px;
+    transition: transform 0.3s linear;
+}
+
+.content {
+    background: forestgreen;
+    margin-top: 15px;
+    border-radius: 7px;
+    padding: 20px;
+    display: none;
+}
+
+.active .content{
+    display: block;
+    transition: transform 0.8s;
+}
+
+.active .select-button i{
+    transform: rotate(-180deg);
+}
+
+.content .search {
+    position: relative;
+}
+
+.search input {
+    height: 40px;
+    width: 100%;
+    font-size: 15px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid forestgreen;
+    text-align: center;
+}
+
+.search i {
+    left: 15px;
+    line-height: 40px;
+    position: absolute;
+    color: white;
+    font-size: 15px;
+}
+
+.content .user-container {
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.user-container li {
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    list-style-type: none;
+}
+
+.user-container li:hover {
+    background: dimgrey;
+}

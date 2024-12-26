@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Customers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <script type="module" src="{{ url_for('static', filename="js/customers.js") }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="main-container">
+        {% for msg in get_flashed_messages() %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+        <div class="button-container">
+            <button class="item-button">Add a new customer</button>
+            <button class="display-button">Display all saved customers</button>
+        </div>
+        <div class="hidden-popup" id="popup">
+            <form class="item-form" method="post">
+                <input type="text" placeholder="Name" name="name">
+                <input type="text" placeholder="Address" name="address">
+                <input type="submit" value="Submit" id="submit-button">
+            </form>
+        </div>
+    </div>
+{% endblock %}

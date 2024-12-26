@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Order</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/order.css') }}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename="css/catalogue.css") }}">
+    <script type="module" src="{{ url_for('static', filename='js/order.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <form method="post">
+        <div class="main-container">
+            <div class="customer-container">
+                <div class="select-button">
+                    <span>Select Customer</span>
+                    <i class="uil uil-angle-down"></i>
+                </div>
+                <div class="content">
+                    <div class="search">
+                        <i class="uil uil-search"></i>
+                        <input class="searchbar" type="text" placeholder="Search">
+                    </div>
+                    <ul class="user-container">
+                        {% for customer in customers %}
+                            <li>{{ customer.name }}</li>
+                            <input type="hidden" name="user" value="{{ customer.id }}">
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dish-container">
+                <table>
+                    <caption>Main course:</caption>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+
+                    {% for dish in dishes %}
+                        <form method="post">
+                            <tr>
+                                <td>
+                                    <input type="hidden" name="id" value={{ dish.id }}>
+                                    {{ dish.id }}
+                                </td>
+                                <td>{{ dish.name }}</td>
+                                <td>{{ dish.price }} Euro</td>
+                                <td>
+                                    <input class="add-button" type="submit" value="Select Dish" name="select">
+                                </td>
+                            </tr>
+                        </form>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="drink-container">
+                <table>
+                    <caption>Drinks:</caption>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+
+                    {% for drink in drinks %}
+                        <form method="post">
+                            <tr>
+                                <td>
+                                    {{ drink.id }}
+                                    <input type="hidden" name="id" value={{ drink.id }}>
+                                </td>
+                                <td>{{ drink.name }}</td>
+                                <td>{{ drink.price }} Euro</td>
+                                <td>
+                                    <input class="add-button" type="submit" value="Select Drink" name="select">
+                                </td>
+                            </tr>
+                        </form>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="submit-container">
+                <button class="order-button" type="submit" value="Add Order" name="select">Add new Order</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

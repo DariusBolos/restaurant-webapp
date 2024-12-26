@@ -1,0 +1,56 @@
+html {color-scheme: dark}
+
+body {
+    color: white;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10vw
+}
+
+.dish-container,
+.drink-container,
+.customers-container{
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #323232;
+}
+
+caption,
+th,
+td{
+    padding: 1rem;
+}
+
+caption,
+th{
+    text-align: left;
+}
+
+caption {
+    background: hsl(0 0% 0%);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+th {
+    background: hsl(0 0% 0% / 0.5);
+}
+
+tr:nth-of-type(2n) {
+    background: hsl(0 0% 0% / 0.1);
+}
+
+.remove-button {
+    cursor: pointer;
+    min-height: 3vw
+}
